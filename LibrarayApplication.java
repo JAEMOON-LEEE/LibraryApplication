@@ -7,5 +7,27 @@
  */
 public class LibrarayApplication
 {
-private x , y
+    public setUserDB(String userData){
+        
+    }
+    
+    public setBookDB(String bookData){
+        
+    }
+    
+    public void printLoanbookList(){
+        
+    }
+    
+    public void printPossiblebookList(){
+        
+    }
+    
+    public void borrowBook(String stID, String bookID){
+        
+    }
+    
+    public void returnBook(String stID, String bookID){
+        
+    }
 }
