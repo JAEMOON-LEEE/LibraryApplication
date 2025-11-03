@@ -9,11 +9,19 @@ public class Book
 {
     private String title;
     private String author;
-    private String bookID;
+    private int catalogueNumber;
 
-    public Book(String title, String author, String bookID){
+    public Book(String title, String author, int catalogueNumber){
         this.title = title;
         this.author = author;
-        this.bookID = bookID;
+        this.catalogueNumber = catalogueNumber;
+    }
+    
+    public boolean checkBook(){
+        return true;
+    }
+    
+    public void display(){
+        System.out.println("책 제목: " + title + "저자: " + author + "고유번호: " + catalogueNumber);
     }
 }

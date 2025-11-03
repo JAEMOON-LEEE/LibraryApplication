@@ -7,27 +7,24 @@
  */
 public class LibrarayApplication
 {
-    public setUserDB(String userData){
-        
+    private String name;
+    
+    public Library(String name){
+        this.name = name;
     }
     
-    public setBookDB(String bookData){
-        
+    public void registerOneBorrower(String name, int stID){
+        System.out.println("대출자 등록 완료:");
+        System.out.println("이름: " + name);
+        System.out.println("학생 ID: " + stID);
     }
     
-    public void printLoanbookList(){
-        
+    public void displayBookForLoan(){
+        System.out.println("대출 가능한 책 목록을 표시합니다.");
+        System.out.println("소프트웨어 분석설계");
     }
     
-    public void printPossiblebookList(){
-        
-    }
-    
-    public void borrowBook(String stID, String bookID){
-        
-    }
-    
-    public void returnBook(String stID, String bookID){
-        
+    public void lendOneBook(){
+        System.out.println("책을 한 권 대출");
     }
 }
