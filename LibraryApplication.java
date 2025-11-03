@@ -5,18 +5,18 @@
  * @author (작성자 이름)
  * @version (버전 번호 또는 작성한 날짜)
  */
-public class LibrarayApplication
+public class LibraryApplication
 {
     private String name;
     
-    public LibrarayApplication(String name){
+    public LibraryApplication(String name){
         this.name = name;
     }
     
     public void registerOneBorrower(String name, int stID){
         System.out.println("대출자 등록 완료:");
-        System.out.println("이름: " + this.name);
-        System.out.println("학생 ID: " + this.stID);
+        System.out.println("이름: " + name);
+        System.out.println("학생 ID: " + stID);
     }
     
     public void displayBookForLoan(){
