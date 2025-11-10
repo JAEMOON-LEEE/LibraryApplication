@@ -1,0 +1,53 @@
+
+/**
+ * LibDB 클래스의 설명을 작성하세요.
+ *
+ * @author (작성자 이름)
+ * @version (버전 번호 또는 작성한 날짜)
+ */
+    public class LibDB<T>
+{
+    private ArrayList<T> db;
+
+    /**
+     * LibDB 클래스의 객체 생성자
+     */
+    public LibDB() {
+        this.db = new ArrayList<T>();
+    }
+
+     /**
+     * addElement 메소드 - DB에 요소를 추가
+     *
+     * @param  element  추가할 객체
+     */
+    public void addElement(T element) {
+        db.add(element);
+    }
+    
+    /**
+     * findElement 메소드 - ID로 객체를 검색
+     *
+     * @param  id  검색할 ID 
+     * @return     찾은 객체 또는 null
+     */
+    public T findElement(String id) {
+        Iterator<T> iterator = db.iterator(); // 7장 Iterator (p423) 참조, db에 저장된 걸렉션에서 요소를 순차 검색할때 사용
+        while (iterator.hasNext()) { //7장 Iterator (p423) 참조, hasNext()메소드를 통해 다음 방문할 요소가 있으면 true retrun
+            T elem = iterator.next();
+            if(elem.getID().equals(id)){ //6장 boolean equals(Object obj) 잠조 (p356), 두 객체의 내용이 같은지 비교하는 메소드
+                return elem;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * printAllElement 메소드 - 모든 객체를 출력
+     */
+    public void printAllElements() {
+        for (T s : db) {
+            System.out.println(s);
+        }
+    }
+}

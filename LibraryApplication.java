@@ -13,17 +13,26 @@ public class LibraryApplication
         this.name = name;
     }
     
-    public void registerOneBorrower(String name, int stID){
-        System.out.println("대출자 등록 완료:");
-        System.out.println("이름: " + name);
-        System.out.println("학생 ID: " + stID);
+    public void registerOneBorrower(String name){
+        /* 1. User객체 생성 파라메타(이름,고유번호)
+         * 2. DB에 저장
+         */
     }
     
     public void displayBookForLoan(){
-        System.out.println("-----------대출 가능한 책 목록-----------.");
+        /* [iierator와 while문 사용]
+         * 1. 책한권 요청
+         * 2. 대출상태 확인check()메소드 활용
+         * 3. 대출가능시 display()메소드로 화면 표시
+         */
     }
     
     public void lendOneBook(){
-        System.out.println("책을 한 권 대출");
+        /* 1. findElement를 사용해서 책과 이용자 검색
+         * 2. check()메소드 활용해서 대출가능여부 검사
+         * 3. 대출 객체 생성
+         * 4. 대출정보를 DB 저장
+         * 5. 대출정보 표시
+         */
     }
 }

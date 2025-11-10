@@ -22,6 +22,11 @@ public class Book
     }
     
     public void display(){
-        System.out.println("책 제목: " + title + "저자: " + author + "고유번호: " + catalogueNumber);
+        while(모든책출력완료=true){
+            책한권 요청
+            chec()
+            display()
+            return
+        }
     }
 }
