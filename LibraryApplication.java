@@ -14,25 +14,56 @@ public class LibraryApplication
     }
     
     public void registerOneBorrower(String name){
-        /* 1. User객체 생성 파라메타(이름,고유번호)
-         * 2. DB에 저장
-         */
+        String id = "Borrower" + (borrower.size() + 1); // 고유번호
+        borrower borrower = new borrower(name, id);
+        borrower.add(borrower); // DB에 저장
+        System.out.println("회원 등록 완료: " + name + " (ID: " + id + ")");
+    
     }
     
     public void displayBookForLoan(){
-        /* [iierator와 while문 사용]
-         * 1. 책한권 요청
-         * 2. 대출상태 확인check()메소드 활용
-         * 3. 대출가능시 display()메소드로 화면 표시
-         */
+        Iterator<Book> it = books.iterator();
+        while (it.hasNext()) {
+            Book book = it.next();
+            if (book.check()) { // 대출 가능 여부 확인
+                book.display(); // 화면에 표시
+            }
+        }
     }
     
     public void lendOneBook(){
-        /* 1. findElement를 사용해서 책과 이용자 검색
-         * 2. check()메소드 활용해서 대출가능여부 검사
-         * 3. 대출 객체 생성
-         * 4. 대출정보를 DB 저장
-         * 5. 대출정보 표시
-         */
+        Book foundBook = null;
+        User foundUser = null;
+
+        // findElement 역할: 책과 사용자 검색
+        for (Book b : books) {
+            if (b.getTitle().equals(bookTitle)) {
+                foundBook = b;
+                break;
+            }
+        }
+        for (User u : users) {
+            if (u.getName().equals(userName)) {
+                foundUser = u;
+                break;
+            }
+        }
+
+        if (foundBook == null || foundUser == null) {
+            System.out.println("책 또는 사용자를 찾을 수 없습니다.");
+            return;
+        }
+
+        // check()로 대출 가능 여부 검사
+        if (!foundBook.check()) {
+            System.out.println("이미 대출 중인 책입니다.");
+            return;
+        }
+
+        // 대출 처리
+        foundBook.loan();
+        Loan loan = new Loan(foundUser, foundBook);
+        loans.add(loan); // DB 저장
+        loan.display();  // 대출 정보 출력
     }
 }
