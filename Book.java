@@ -23,10 +23,7 @@ public class Book
     
     public void display(){
         while(모든책출력완료=true){
-            책한권 요청
-            chec()
-            display()
-            return
+            
         }
     }
 }
