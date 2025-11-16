@@ -29,7 +29,8 @@ public class LibraryApplication
      */
     public void registerOneBorrower(String name, int stID)
     {
-        // 여기에 코드를 작성하세요
+        Borrower borrowerA = new Borrower("전영준", 2022320022);
+        Borrower.setBorrower(borrowerA);
     }
 
     /**
