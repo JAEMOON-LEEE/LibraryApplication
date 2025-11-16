@@ -22,7 +22,13 @@ public class Book
     }
     
     public void display(){
+<<<<<<< HEAD
         
+=======
+        while(모든책출력완료=true){
+            
+        }
+>>>>>>> 88f70caa5ced3d48f1a1fde2dc64fd0ccbf7bf73
     }
     }
 
