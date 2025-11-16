@@ -5,12 +5,12 @@
  * @author (작성자 이름)
  * @version (버전 번호 또는 작성한 날짜)
  */
-public class borrower
+public class Borrower
 {
     private String name;
     private int stID;
 
-    public borrower(String name, int stID){
+    public Borrower(String name, int stID){
         this.name = name;
         this.stID = stID;
     }

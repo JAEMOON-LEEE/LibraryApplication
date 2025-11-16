@@ -17,16 +17,12 @@ public class Book
         this.catalogueNumber = catalogueNumber;
     }
     
-    public boolean checkBook(){
+    public boolean check(){
         return true;
     }
     
     public void display(){
-        while(모든책출력완료=true){
-            책한권 요청
-            chec()
-            display()
-            return
-        }
+        
     }
-}
+    }
+
