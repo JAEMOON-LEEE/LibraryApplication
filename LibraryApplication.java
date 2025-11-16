@@ -1,3 +1,4 @@
+import java.util.Iterator;
 
 /**
  * LibrarayApplication 클래스의 설명을 작성하세요.
@@ -50,6 +51,12 @@ public class LibraryApplication
      */
     public void displayBooksForLoan()
     {
-        // 여기에 코드를 작성하세요
+        Iterator iter = BookDB.iterator();
+        while(iter.hasNext()==true){
+            Book book = (Book)iter.next();
+            if(book.check()==null){
+                book.display();
+            }
+        }
     }  
 }
