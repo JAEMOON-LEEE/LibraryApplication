@@ -1,4 +1,3 @@
-                             
 /**
  * Loan 클래스의 설명을 작성하세요.
  *
@@ -7,14 +6,12 @@
  */
 public class Loan
 {
-private int loandate;
-private int returndate;
-private Book book;         
-private Borrower borrower;
+private String loandate;
+private String returndate;
     
-    public Loan(Book book,Borrower borrower,  int loandate, int returndate){
+    public Loan(Book book,Borrower borrower,  String loandate, String returndate){
     this.book = book;
-    this.Borrower = borrower;
+    this.borrower = borrower;
     this.loandate = loandate;
     this.returndate = returndate;
 }

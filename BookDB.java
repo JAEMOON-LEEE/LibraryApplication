@@ -35,11 +35,11 @@ public class BookDB
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
      */
-    public String findOneBook(int catalogueNumber)
+    public Book findOneBook(int catalogueNumber)
     {
         // 여기에 코드를 작성하세요
         
-        return "//";
+        return ;
     }
 
 }
