@@ -8,20 +8,48 @@
 public class LibraryApplication
 {
     private String name;
-    
-    public LibraryApplication(String name){
 
+    /**
+     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     *
+     * @param  y  메소드의 샘플 파라미터
+     * @return    x 와 y의 합
+     */
+    public LibraryApplication()
+    {
+        this.name = name;
     }
-    
-    public void 새로운 이용자 1명 등록(String name,int stID ){
-    }
-    
-    public void 대출 가능한 책의 정보를 디스플레이(){
 
+    /**
+     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     *
+     * @param  y  메소드의 샘플 파라미터
+     * @return    x 와 y의 합
+     */
+    public void registerOneBorrower(String name, int stID)
+    {
+        // 여기에 코드를 작성하세요
     }
-    
-    public void 책1권을 대출(){
-      
-        }
 
+    /**
+     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     *
+     * @param  y  메소드의 샘플 파라미터
+     * @return    x 와 y의 합
+     */
+    public void LendOneBook()
+    {
+        // 여기에 코드를 작성하세요
     }
+
+    /**
+     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     *
+     * @param  y  메소드의 샘플 파라미터
+     * @return    x 와 y의 합
+     */
+    public void displayBooksForLoan()
+    {
+        // 여기에 코드를 작성하세요
+    }  
+}
