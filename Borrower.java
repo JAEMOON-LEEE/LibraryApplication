@@ -18,4 +18,12 @@ public class Borrower
    public boolean check(){
        return true;
    }
+   
+   public String getName(){
+       return name;
+   }
+   
+   public int getSID(){
+       return sID;
+   }
 }
