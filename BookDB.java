@@ -38,9 +38,27 @@ public class BookDB
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
      */
-    public Iterator<Book> iterator() {
-        return bookDB.iterator();
+    public String getAvailableBook() {
+        String availableBook = ""; 
+        Iterator<Book> iter = bookDB.iterator();
+        while(iter.hasNext()==true){
+            Book book = (Book)iter.next();
+            if(book.check()==true){
+                availableBook +=book.display()+"\n";
+            }
+        }
+        return availableBook;
     }
 
-
+    public String getUnavailableBook(){
+        String unavailableBook = ""; 
+        Iterator<Book> iter = bookDB.iterator();
+        while(iter.hasNext()==true){
+            Book book = (Book)iter.next();
+            if(book.check()==false){
+                unavailableBook +=book.display()+"\n";
+            }
+        }
+        return unavailableBook;
+    }
 }

@@ -43,7 +43,7 @@ public class LibraryApplication
     {
         Book bookA= BookDB.findOneBook(123);
         Borrower borrowerA = BorrowerDB.findOneBorrower(2022320038);
-        
+
         Calendar cal = Calendar.getInstance();
 
         int year = cal.get(Calendar.YEAR);
@@ -65,13 +65,18 @@ public class LibraryApplication
      */
     public String displayBooksForLoan()
     {
-        Iterator<Book> iter = bookDB.iterator();
-        while(iter.hasNext()==true){
-            Book book = (Book)iter.next();
-            if(book.check()==true){
-                book.display();
-            }
-        }
-        return "이상 대출 가능한 책입니다.";
-    }  
+        return bookDB.getAvailableBook();
+    }
+
+    /**
+     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     *
+     * @param  y  메소드의 샘플 파라미터
+     * @return    x 와 y의 합
+     */
+    public String displayBooksOnLoan()
+    {
+        return bookDB.getUnavailableBook
+    }
+
 }

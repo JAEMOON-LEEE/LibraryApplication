@@ -46,9 +46,9 @@ public class Book
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
      */
-    public void display()
+    public String display()
     {
-        System.out.println(this.title+"/"+this.author+"/"+this.catalogueNumber);
+        return this.title+"/"+this.author+"/"+this.catalogueNumber;
     }
 
 }
