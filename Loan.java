@@ -8,10 +8,12 @@ public class Loan
 {
 private String loandate;
 private String returndate;
+private Book bookA;
+private Borrower borrowerA;
     
-    public Loan(Book book,Borrower borrower,  String loandate, String returndate){
-    this.book = book;
-    this.borrower = borrower;
+    public Loan(Book bookA,Borrower borrowerA,  String loandate, String returndate){
+    this.bookA = bookA;
+    this.borrowerA = borrowerA;
     this.loandate = loandate;
     this.returndate = returndate;
 }

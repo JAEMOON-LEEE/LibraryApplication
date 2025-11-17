@@ -1,6 +1,5 @@
 import java.util.Iterator;
 import java.util.Calendar;
-
 /**
  * LibrarayApplication 클래스의 설명을 작성하세요.
  *
@@ -64,14 +63,15 @@ public class LibraryApplication
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
      */
-    public void displayBooksForLoan()
+    public String displayBooksForLoan()
     {
-        Iterator<book> iter = BookDB.iterator();
+        Iterator<Book> iter = bookDB.iterator();
         while(iter.hasNext()==true){
             Book book = (Book)iter.next();
             if(book.check()==true){
                 book.display();
             }
         }
+        return "이상 대출 가능한 책입니다.";
     }  
 }
