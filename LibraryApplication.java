@@ -54,7 +54,7 @@ public class LibraryApplication
         String loanDate = "" + year +month + day;
 
         bookA.check();
-        Loan loanA = new Loan(bookA,borrowerA,loanDate,??);
+        Loan loanA = new Loan(bookA,borrowerA,loanDate,returnDate);
         LoanDB.setLoan(loanA);
     }
 
@@ -66,10 +66,10 @@ public class LibraryApplication
      */
     public void displayBooksForLoan()
     {
-        Iterator iter = BookDB.iterator();
+        Iterator<book> iter = BookDB.iterator();
         while(iter.hasNext()==true){
             Book book = (Book)iter.next();
-            if(book.check()==null){
+            if(book.check()==true){
                 book.display();
             }
         }

@@ -24,17 +24,6 @@ public class BookDB
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
      */
-    public String getOneBook()
-    {
-        return "//";
-    }
-
-    /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
-     */
     public Book findOneBook(int catalogueNumber)
     {
         // 여기에 코드를 작성하세요

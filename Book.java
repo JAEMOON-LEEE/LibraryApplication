@@ -10,6 +10,7 @@ public class Book
     private String title;
     private String author;
     private int catalogueNumber;
+    private String loanState;
 
     /**
      * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
@@ -22,6 +23,7 @@ public class Book
         this.title = title;
         this.author = author;
         this.catalogueNumber = catalogueNumber;
+        this.loanState = null;
     }
 
     /**
@@ -32,7 +34,10 @@ public class Book
      */
     public boolean check()
     {
-        return true;
+        if(loanState == null){
+            return true;}
+        return false;
+            
     }
 
     /**
@@ -43,7 +48,7 @@ public class Book
      */
     public void display()
     {
-        // 여기에 코드를 작성하세요
+        System.out.println(this.title+"/"+this.author+"/"+this.catalogueNumber);
     }
 
 }
