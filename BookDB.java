@@ -67,7 +67,7 @@ public class BookDB
                 unAvailableBook +=book.display()+"\n";
             }
         }
-        if(unAvailableBook.equals("")){
+        if(unAvailableBook.equals("대출중")){
             return "대출중인 책이 없습니다!";
         }
         return unAvailableBook;

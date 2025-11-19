@@ -28,13 +28,15 @@ public class BorrowerDB
      */
     public String saveBorrower(Borrower borrowerA)
     {
+
         if(findOneBorrower(borrowerA.getID()) == null) {
             borrowerDB.add(borrowerA);
             return "저장완료";
 
-            
         }
         return "중복등록";
+
+
     }
 
     /**
