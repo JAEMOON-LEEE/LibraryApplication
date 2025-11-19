@@ -47,18 +47,24 @@ public class BookDB
                 availableBook +=book.display()+"\n";
             }
         }
+        if(availableBook.equals("")){
+            return "대출가능한 책이 없습니다!";
+        }
         return availableBook;
     }
 
     public String getUnavailableBook(){
-        String unavailableBook = ""; 
+        String unAvailableBook = ""; 
         Iterator<Book> iter = bookDB.iterator();
         while(iter.hasNext()==true){
             Book book = (Book)iter.next();
             if(book.check()==false){
-                unavailableBook +=book.display()+"\n";
+                unAvailableBook +=book.display()+"\n";
             }
         }
-        return unavailableBook;
+        if(unAvailableBook.equals("")){
+            return "대출중인 책이 없습니다!";
+        }
+        return unAvailableBook;
     }
 }
