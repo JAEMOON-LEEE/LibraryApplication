@@ -9,6 +9,7 @@ public class Borrower
 {
    private String name;
    private int stID;
+   private int loanCount;
    
    public Borrower(String name, int stID){
        this.name = name;
@@ -16,7 +17,13 @@ public class Borrower
    }
    
    public boolean check(){
-       return true;
+       if(loanCount < 11){
+            System.out.println("대출 가능");
+            return true;}
+        else{
+            System.out.println("대출 불가능");
+            return false;
+        }
    }
    
    public String getName(){

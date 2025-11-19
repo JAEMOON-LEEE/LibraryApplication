@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  * LibrarayApplication 클래스의 설명을 작성하세요.
@@ -9,9 +10,13 @@ import java.util.Iterator;
 public class LibraryApplication
 {
     private String name;
-    BookDB bookDB;
-    BorrowerDB borrowerDB;
-    LoanDB loanDB;
+    private BookDB bookDB;
+    private BorrowerDB borrowerDB;
+    private LoanDB loanDB;
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+    }
 
     /**
      * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
@@ -45,10 +50,10 @@ public class LibraryApplication
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
      */
-    public void LendOneBook()
+    public String LendOneBook(int catalogueNumber, int stID)
     {
-        Book bookA= BookDB.findOneBook(123);
-        Borrower borrowerA = BorrowerDB.findOneBorrower(2022320038);
+        Book bookA = BookDB.findOneBook(catalogueNumber);
+        Borrower borrowerA = BorrowerDB.findOneBorrower(stID);
         if(bookA.check()==true && borrowerA.check()==true){
             Loan loanA = new Loan(bookA,borrowerA);
             LoanDB.saveLoan(loanA);

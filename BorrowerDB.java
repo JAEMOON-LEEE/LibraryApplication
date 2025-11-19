@@ -53,6 +53,9 @@ public class BorrowerDB
             if(borrower.getID() == stID){
                 return borrower;
             }
+            else{
+                System.out.println("해당 유저를 찾을 수 없습니다.");
+            }
         }
         return null;
     }
