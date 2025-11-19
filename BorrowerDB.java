@@ -28,7 +28,8 @@ public class BorrowerDB
      */
     public String saveBorrower(Borrower borrowerA)
     {
-        return "hi";
+        borrowerDB.add(borrowerA);
+        return "대출완료";
     }
 
     /**

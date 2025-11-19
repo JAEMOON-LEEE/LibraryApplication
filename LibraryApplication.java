@@ -1,5 +1,5 @@
 import java.util.Iterator;
-import java.util.Calendar;
+
 /**
  * LibrarayApplication 클래스의 설명을 작성하세요.
  *
@@ -9,6 +9,9 @@ import java.util.Calendar;
 public class LibraryApplication
 {
     private String name;
+    BookDB bookDB;
+    BorrowerDB borrowerDB;
+    LoanDB loanDB;
 
     /**
      * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
@@ -19,6 +22,9 @@ public class LibraryApplication
     public LibraryApplication()
     {
         this.name = name;
+        bookDB = new BookDB();
+        borrowerDB = new BorrowerDB();
+        loanDB = new LoanDB();
     }
 
     /**
@@ -30,7 +36,7 @@ public class LibraryApplication
     public void registerOneBorrower(String name, int stID)
     {
         Borrower borrowerA = new Borrower("전영준", 2022320022);
-        Borrower.setBorrower(borrowerA);
+        borrowerDB.saveBorrower(borrowerA);
     }
 
     /**
@@ -69,7 +75,7 @@ public class LibraryApplication
      */
     public String displayBooksOnLoan()
     {
-        return bookDB.getUnavailableBook
+        return bookDB.getUnavailableBook();
     }
 
 }
