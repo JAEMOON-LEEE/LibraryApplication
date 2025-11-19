@@ -1,4 +1,4 @@
-import java.util.TreeSet;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -10,14 +10,14 @@ import java.util.Iterator;
 public class BorrowerDB
 {
     // 인스턴스 변수 - 다음의 예제를 사용자에 맞게 변경하세요.
-    private TreeSet<Borrower> borrowerDB;
+    private ArrayList<Borrower>borrowerDB;
 
     /**
      * BorrwoerDB 클래스의 객체 생성자
      */
     public BorrowerDB()
     {
-        this.borrowerDB = new TreeSet<Borrower>();
+        this.borrowerDB = new ArrayList<Borrower>();
     }
 
     /**
@@ -28,7 +28,13 @@ public class BorrowerDB
      */
     public String saveBorrower(Borrower borrowerA)
     {
-        return "hi";
+        if(findOneBorrower(borrowerA.getID()) == null) {
+            borrowerDB.add(borrowerA);
+            return "저장완료";
+
+            
+        }
+        return "중복등록";
     }
 
     /**
@@ -36,9 +42,9 @@ public class BorrowerDB
      *
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
-     */
+     */ 
     public Borrower findOneBorrower(int stID)
-        {
+    {
         Iterator<Borrower> iterator = borrowerDB.iterator();
         while(iterator.hasNext()){
             Borrower borrower = iterator.next();
@@ -48,4 +54,4 @@ public class BorrowerDB
         }
         return null;
     }
-    }
+}
