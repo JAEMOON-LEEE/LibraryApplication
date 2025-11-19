@@ -8,11 +8,11 @@
 public class Borrower
 {
    private String name;
-   private int sID;
+   private int stID;
    
-   public Borrower(String borrowerName, int stID){
-       this.name = borrowerName;
-       this.sID = stID;
+   public Borrower(String name, int stID){
+       this.name = name;
+       this.stID = stID;
    }
    
    public boolean check(){
@@ -23,7 +23,7 @@ public class Borrower
        return name;
    }
    
-   public int getSID(){
-       return sID;
+   public int getID(){
+       return this.stID;
    }
 }

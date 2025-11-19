@@ -43,18 +43,11 @@ public class LibraryApplication
     {
         Book bookA= BookDB.findOneBook(123);
         Borrower borrowerA = BorrowerDB.findOneBorrower(2022320038);
-
-        Calendar cal = Calendar.getInstance();
-
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH) + 1;
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-
-        String loanDate = "" + year +month + day;
-
-        bookA.check();
-        Loan loanA = new Loan(bookA,borrowerA,loanDate,returnDate);
-        LoanDB.setLoan(loanA);
+        if(bookA.check()==true && borrowerA.check()==true){
+            Loan loanA = new Loan(bookA,borrowerA);
+            LoanDB.saveLoan(loanA);
+            System.out.println("대출완료");
+        }
     }
 
     /**

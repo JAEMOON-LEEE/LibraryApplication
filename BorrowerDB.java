@@ -1,4 +1,5 @@
 import java.util.TreeSet;
+import java.util.Iterator;
 
 /**
  * BorrwoerDB 클래스의 설명을 작성하세요.
@@ -25,7 +26,7 @@ public class BorrowerDB
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
      */
-    public String setBorrower(Borrower borrowerA)
+    public String saveBorrower(Borrower borrowerA)
     {
         return "hi";
     }
@@ -36,9 +37,15 @@ public class BorrowerDB
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
      */
-    public String findOneBorrower(int stID)
-    {
-        return "hi";
+    public Borrower findOneBorrower(int stID)
+        {
+        Iterator<Borrower> iterator = borrowerDB.iterator();
+        while(iterator.hasNext()){
+            Borrower borrower = iterator.next();
+            if(borrower.getID() == stID){
+                return borrower;
+            }
+        }
+        return null;
     }
-
-}
+    }
