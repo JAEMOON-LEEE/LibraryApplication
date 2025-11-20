@@ -18,13 +18,18 @@ public class Loan
         this.bookA = bookA;
         this.borrowerA = borrowerA;
         
-         Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        this.loandate = sdf.format(cal.getTime());
+        Calendar cal = Calendar.getInstance();
 
-        // 반납예정일 = 14일 뒤
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH) + 1;
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
         cal.add(Calendar.DATE, 14);
-        this.returndate = sdf.format(cal.getTime());
+        int returnYear = cal.get(Calendar.YEAR);
+        int returnMonth = cal.get(Calendar.MONTH) + 1;
+        int retrunDay = cal.get(Calendar.DAY_OF_MONTH);
+
+        this.returndate = returnYear + "-" + returnMonth + "-" + retrunDay;
 
 
         this.bookA.setLoanState("대출중");
@@ -43,12 +48,3 @@ public class Loan
     }
 
 }
-/*
-Calendar cal = Calendar.getInstance();
-
-int year = cal.get(Calendar.YEAR);
-int month = cal.get(Calendar.MONTH) + 1;
-int day = cal.get(Calendar.DAY_OF_MONTH);
-
-String loanDate = "" + year +month + day;
- */
