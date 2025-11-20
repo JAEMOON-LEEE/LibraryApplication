@@ -91,6 +91,9 @@ public class LibraryApplication
      */
     public String registerOneBorrower(String name, int stID)
     {
+        Borrower borrowerB = borrowerDB.findOneBorrower(stID);
+        if(borrowerB != null){
+            return "중복등록";}
         Borrower borrowerA = new Borrower(name, stID);
         return borrowerDB.saveBorrower(borrowerA);
     }
