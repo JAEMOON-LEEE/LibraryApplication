@@ -14,23 +14,22 @@ public class Borrower
    public Borrower(String name, int stID){
        this.name = name;
        this.stID = stID;
+       this.loanCount = 0;
    }
    
    public boolean check(){
-       if(loanCount < 11){
-            System.out.println("대출 가능");
-            return true;}
-        else{
-            System.out.println("대출 불가능");
-            return false;
-        }
-   }
-   
-   public String getName(){
-       return name;
+       return loanCount <11;
    }
    
    public int getID(){
        return this.stID;
+   }
+   
+   public void increaseLoanCount(){
+       loanCount++;
+   }
+   
+   public String getName(){
+       return name;
    }
 }

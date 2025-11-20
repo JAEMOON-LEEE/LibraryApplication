@@ -33,9 +33,6 @@ public class BookDB
             if(book.getID() == catalogueNumber){
                 return book;
             }
-            else{
-                System.out.println("해당 책을 찾을 수 없습니다.");
-            }
         }
         return null;
     }
@@ -70,7 +67,7 @@ public class BookDB
                 unAvailableBook +=book.display()+"\n";
             }
         }
-        if(unAvailableBook.equals("대출중")){
+        if(unAvailableBook.equals("")){
             return "대출중인 책이 없습니다!";
         }
         return unAvailableBook;

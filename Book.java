@@ -34,10 +34,7 @@ public class Book implements Comparable<Book>
      */
     public boolean check()
     {
-        if(loanState == null){
-            return true;}
-        return false;
-
+        return loanState == null;
     }
 
     /**
@@ -60,7 +57,7 @@ public class Book implements Comparable<Book>
     public int getID()
     {
         // 여기에 코드를 작성하세요
-        return this.catalogueNumber;
+        return catalogueNumber;
     }
 
     /**

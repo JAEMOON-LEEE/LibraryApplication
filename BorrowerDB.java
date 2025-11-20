@@ -28,15 +28,12 @@ public class BorrowerDB
      */
     public String saveBorrower(Borrower borrowerA)
     {
-
         if(findOneBorrower(borrowerA.getID()) == null) {
             borrowerDB.add(borrowerA);
             return "저장완료";
 
         }
         return "중복등록";
-
-
     }
 
     /**
@@ -53,10 +50,8 @@ public class BorrowerDB
             if(borrower.getID() == stID){
                 return borrower;
             }
-            else{
-                System.out.println("해당 유저를 찾을 수 없습니다.");
-            }
         }
         return null;
+        }
+        
     }
-}
