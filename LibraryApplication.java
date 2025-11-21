@@ -21,9 +21,11 @@ public class LibraryApplication
         while(true) {
             System.out.println("\n===== 도서관 시스템 =====");
             System.out.println("1. 도서 대출");
-            System.out.println("2. 회원 등록");
-            System.out.println("3. 대출 중인 현황");
-            System.out.println("4. 대출 가능한 현황");
+            System.out.println("2. 도서 반납");
+            System.out.println("3. 새로운 이용자 등록");
+            System.out.println("4. 새로운 도서 등록");
+            System.out.println("5. 대출 중인 책 디스플레이");
+            System.out.println("6. 대출 가능한 책 디스플레이");
             System.out.println("0. 종료");
             System.out.print("메뉴 선택: ");
 
@@ -41,23 +43,45 @@ public class LibraryApplication
                     String lendResult = app.lendOneBook(bookID, stID);
                     System.out.println(lendResult);
                     break;
-
+                    
                 case 2:
-                    System.out.print("회원 이름 입력: ");
-                    String name = scanner.nextLine();
-                    System.out.print("학번 입력: ");
-                    int newID = scanner.nextInt();
+                    System.out.print("반납할 책의 번호 입력: ");
+                    int returnBookID = scanner.nextInt();
+                    System.out.print("회원 학번 입력: ");
+                    int returnStID = scanner.nextInt();
 
-                    String saveResult = app.registerOneBorrower(name, newID);
-                    System.out.println(saveResult);
+                    String returnResult = app.returnOneBook(returnBookID, returnStID);
+                    System.out.println(returnResult);
                     break;
 
                 case 3:
+                    System.out.print("회원 이름 입력: ");
+                    String name = scanner.nextLine();
+                    System.out.print("학번 입력: ");
+                    int newstID = scanner.nextInt();
+
+                    String saveBorrowerResult = app.registerOneBorrower(name, newstID);
+                    System.out.println(saveBorrowerResult);
+                    break;
+                    
+                case 4:
+                    System.out.print("책 제목 입력: ");
+                    String title = scanner.nextLine();
+                    System.out.print("책 저자 입력: ");
+                    String author = scanner.nextLine();
+                    System.out.print("책 고유번호 입력: ");
+                    int catalogueNumber = scanner.nextInt();
+
+                    String saveBookResult = app.registerOneBook(title,author, catalogueNumber);
+                    System.out.println(saveBookResult);
+                    break;
+
+                case 5:
                     System.out.println("\n=== 대출 중인 책 ===");
                     System.out.println(app.displayBooksOnLoan());
                     break;
 
-                case 4:
+                case 6:
                     System.out.println("\n=== 대출 가능한 책 ===");
                     System.out.println(app.displayBooksForLoan());
                     break;
@@ -142,7 +166,7 @@ public class LibraryApplication
 
         return "대출완료:" + loanA.toString();
     }
-    
+   
     /**
      * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
      *
@@ -151,8 +175,18 @@ public class LibraryApplication
      */
     public String returnOneBook(int catalogueNumber, int stID)
     {
-        return y;
-    }
+        Loan loanA=loanDB.findLoanData(catalogueNumber,stID);
+        loanDB.removeLoan(loanA);
+        
+        Borrower borrowerA = borrowerDB.findOneBorrower(stID);
+        borrowerA.decreaseLoanCount();
+        
+        Book bookA = bookDB.findOneBook(catalogueNumber);
+        bookA.setLoanState(null);
+        
+        return "반납 완료";
+    }    
+
 
     /**
      * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.

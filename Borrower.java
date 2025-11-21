@@ -29,6 +29,10 @@ public class Borrower
        loanCount++;
    }
    
+   public void decreaseLoanCount(){
+       loanCount--;
+   }
+   
    public String getName(){
        return name;
    }

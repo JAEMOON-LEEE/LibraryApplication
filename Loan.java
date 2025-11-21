@@ -1,4 +1,3 @@
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -47,6 +46,14 @@ public class Loan
     {
         // 여기에 코드를 작성하세요
         return "대출정보:"+bookA.display()+"대출자:"+borrowerA.getName()+ "(" + borrowerA.getID() + ")"  + " / 대출일: " + loandate  + " / 반납예정일: " + returndate;
+    }
+    
+    public Book getBook(){
+        return bookA;
+    }
+    
+    public Borrower getBorrower(){
+        return borrowerA;
     }
 
 }

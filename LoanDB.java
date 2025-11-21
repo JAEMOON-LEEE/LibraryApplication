@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * LoanDB 클래스의 설명을 작성하세요.
@@ -36,8 +37,14 @@ public class LoanDB
      */
     public Loan findLoanData(int catalogueNumber, int stID)
     {
-        // 여기에 코드를 작성하세요
-        return y;
+        Iterator<Loan> iterator = loanDB.iterator();
+        while(iterator.hasNext()){
+            Loan loanA = iterator.next();
+            if(loanA.getBook().getID() == catalogueNumber && loanA.getBorrower().getID() == stID){
+                return loanA;
+            }
+        }
+        return null;
     }
 
     /**
@@ -48,6 +55,6 @@ public class LoanDB
      */
     public boolean removeLoan(Loan loanA)
     {
-        return y;
+        return loanDB.remove(loanA);
     }
 }

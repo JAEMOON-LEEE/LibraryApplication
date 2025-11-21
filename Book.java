@@ -5,7 +5,7 @@
  * @author (소프트웨ㅇ)
  * @version (버전 번호 또는 작성한 날짜)
  */
-public class Book //implements Comparable<Book>
+public class Book implements Comparable<Book>
 {
     private String title;
     private String author;
@@ -78,10 +78,10 @@ public class Book //implements Comparable<Book>
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
      */
-    /*public int compareTo(Book bookA) {
+    public int compareTo(Book bookA) {
         return this.catalogueNumber - bookA.catalogueNumber;
 
-    }*/
+    }
 
     
 
