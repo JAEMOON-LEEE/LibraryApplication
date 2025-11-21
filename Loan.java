@@ -8,8 +8,8 @@ import java.util.Calendar;
  */
 public class Loan
 {
-    private String loandate;
-    private String returndate;
+    private String loanDate;
+    private String returnDate;
     private Book bookA;
     private Borrower borrowerA;
 
@@ -23,14 +23,14 @@ public class Loan
         int month = cal.get(Calendar.MONTH) + 1;
         int day = cal.get(Calendar.DAY_OF_MONTH);
         
-        this.loandate = year + "-" + month + "-" + day;
+        this.loanDate = year + "-" + month + "-" + day;
 
         cal.add(Calendar.DATE, 14);
         int returnYear = cal.get(Calendar.YEAR);
         int returnMonth = cal.get(Calendar.MONTH) + 1;
         int returnDay = cal.get(Calendar.DAY_OF_MONTH);
 
-        this.returndate = returnYear + "-" + returnMonth + "-" + returnDay;
+        this.returnDate = returnYear + "-" + returnMonth + "-" + returnDay;
 
 
         this.bookA.setLoanState("대출중");
@@ -45,7 +45,7 @@ public class Loan
     public String toString()
     {
         // 여기에 코드를 작성하세요
-        return "대출정보:"+bookA.display()+"대출자:"+borrowerA.getName()+ "(" + borrowerA.getID() + ")"  + " / 대출일: " + loandate  + " / 반납예정일: " + returndate;
+        return "대출정보:"+bookA.display()+"대출자:"+borrowerA.getName()+ "(" + borrowerA.getID() + ")"  + " / 대출일: " + loanDate  + " / 반납예정일: " + returnDate;
     }
     
     public Book getBook(){
