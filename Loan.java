@@ -29,9 +29,9 @@ public class Loan
         cal.add(Calendar.DATE, 14);
         int returnYear = cal.get(Calendar.YEAR);
         int returnMonth = cal.get(Calendar.MONTH) + 1;
-        int retrunDay = cal.get(Calendar.DAY_OF_MONTH);
+        int returnDay = cal.get(Calendar.DAY_OF_MONTH);
 
-        this.returndate = returnYear + "-" + returnMonth + "-" + retrunDay;
+        this.returndate = returnYear + "-" + returnMonth + "-" + returnDay;
 
 
         this.bookA.setLoanState("대출중");

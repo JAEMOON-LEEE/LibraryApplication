@@ -104,6 +104,23 @@ public class LibraryApplication
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
      */
+    public String registerOneBook(String title, String author, int catalogueNumber)
+    {
+        Book bookB = bookDB.findOneBook(catalogueNumber);
+        if(bookB != null){
+            return "중복등록";
+        }
+        Book bookA = new Book(title, author, catalogueNumber);
+        return bookDB.saveBook(bookA);
+    }
+
+
+    /**
+     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     *
+     * @param  y  메소드의 샘플 파라미터
+     * @return    x 와 y의 합
+     */
     public String lendOneBook(int catalogueNumber, int stID)
     {
         Book bookA = bookDB.findOneBook(catalogueNumber);
@@ -147,5 +164,6 @@ public class LibraryApplication
     {
         return bookDB.getUnavailableBook();
     }
+
 
 }
