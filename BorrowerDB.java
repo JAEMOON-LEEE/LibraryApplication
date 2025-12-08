@@ -2,54 +2,46 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * BorrwoerDB 클래스의 설명을 작성하세요.
- *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * BorrowerDB 이용자 정보를 저장 및 관리
+ * 
+ * @author (PBL#6팀(2022320038_이재문,2022320022_전영준,2022320019_김승현)
+ * @version (2025.12.10) 
  */
-public class BorrowerDB
-{
-    // 인스턴스 변수 - 다음의 예제를 사용자에 맞게 변경하세요.
-    private ArrayList<Borrower>borrowerDB;
+public class BorrowerDB {
+    private ArrayList<Borrower> borrowerDB;
 
     /**
-     * BorrwoerDB 클래스의 객체 생성자
+     * BorrowerDB 클래스의 객체 생성자
      */
-    public BorrowerDB()
-    {
-        this.borrowerDB = new ArrayList<Borrower>();
+    public BorrowerDB() {
+        borrowerDB = new ArrayList<Borrower>();
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 이용자를 저장하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param borrowerA 저장할 이용자객체
+     * @return          저장 완료 메시지 반환
      */
-    public String saveBorrower(Borrower borrowerA)
-    {
+    public String saveBorrower(Borrower borrowerA) {
         borrowerDB.add(borrowerA);
         return "저장완료";
-
-        }
-    
+    }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 학번으로 이용자를 찾는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
-     */ 
-    public Borrower findOneBorrower(int stID)
-    {
-        Iterator<Borrower> iterator = borrowerDB.iterator();
-        while(iterator.hasNext()){
-            Borrower borrower = iterator.next();
-            if(borrower.getID() == stID){
-                return borrower;
+     * @param stID 학번
+     * @return     해당 이용자를 반환
+     */
+    public Borrower findOneBorrower(int stID) {
+        Iterator<Borrower> iter = borrowerDB.iterator();
+        while (iter.hasNext() == true) {
+            Borrower borrowerA = (Borrower) iter.next();
+            if (borrowerA.getID() == stID) {
+                return borrowerA;
             }
         }
         return null;
-        }
-        
     }
+}

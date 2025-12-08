@@ -1,214 +1,125 @@
-import java.util.Iterator;
-import java.util.Scanner;
-
 /**
- * LibrarayApplication 클래스의 설명을 작성하세요.
+ * LibraryApplication 도서 대출, 반납, 새로운 이용자 등록, 새로운 책 등록, 대출중인 책 디스플레이, 대출가능한 책 디스플레이 기능을 관리
  *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * @author (PBL#6팀(2022320038_이재문,2022320022_전영준,2022320019_김승현)
+ * @version (2025.12.10)
  */
-public class LibraryApplication
-{
+public class LibraryApplication {
     private String name;
-    private BookDB bookDB;
     private BorrowerDB borrowerDB;
+    private BookDB bookDB;
     private LoanDB loanDB;
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        LibraryApplication app = new LibraryApplication();
-
-        while(true) {
-            System.out.println("\n===== 도서관 시스템 =====");
-            System.out.println("1. 도서 대출");
-            System.out.println("2. 도서 반납");
-            System.out.println("3. 새로운 이용자 등록");
-            System.out.println("4. 새로운 도서 등록");
-            System.out.println("5. 대출 중인 책 디스플레이");
-            System.out.println("6. 대출 가능한 책 디스플레이");
-            System.out.println("0. 종료");
-            System.out.print("메뉴 선택: ");
-
-            int menu = scanner.nextInt();
-            scanner.nextLine();
-
-            switch(menu) {
-
-                case 1:
-                    System.out.print("대출할 책의 번호 입력: ");
-                    int bookID = scanner.nextInt();
-                    System.out.print("회원 학번 입력: ");
-                    int stID = scanner.nextInt();
-
-                    String lendResult = app.lendOneBook(bookID, stID);
-                    System.out.println(lendResult);
-                    break;
-                    
-                case 2:
-                    System.out.print("반납할 책의 번호 입력: ");
-                    int returnBookID = scanner.nextInt();
-                    System.out.print("회원 학번 입력: ");
-                    int returnStID = scanner.nextInt();
-
-                    String returnResult = app.returnOneBook(returnBookID, returnStID);
-                    System.out.println(returnResult);
-                    break;
-
-                case 3:
-                    System.out.print("회원 이름 입력: ");
-                    String name = scanner.nextLine();
-                    System.out.print("학번 입력: ");
-                    int newstID = scanner.nextInt();
-
-                    String saveBorrowerResult = app.registerOneBorrower(name, newstID);
-                    System.out.println(saveBorrowerResult);
-                    break;
-                    
-                case 4:
-                    System.out.print("책 제목 입력: ");
-                    String title = scanner.nextLine();
-                    System.out.print("책 저자 입력: ");
-                    String author = scanner.nextLine();
-                    System.out.print("책 고유번호 입력: ");
-                    int catalogueNumber = scanner.nextInt();
-
-                    String saveBookResult = app.registerOneBook(title,author, catalogueNumber);
-                    System.out.println(saveBookResult);
-                    break;
-
-                case 5:
-                    System.out.println("\n=== 대출 중인 책 ===");
-                    System.out.println(app.displayBooksOnLoan());
-                    break;
-
-                case 6:
-                    System.out.println("\n=== 대출 가능한 책 ===");
-                    System.out.println(app.displayBooksForLoan());
-                    break;
-
-                case 0:
-                    System.out.println("프로그램 종료");
-                    return;
-            }
-        }
+    /**
+     * LibraryApplication 클래스의 객체 생성자
+     */
+    LibraryApplication(String l_name){
+        this.name = l_name;
+        this.bookDB = new BookDB();
+        this.borrowerDB = new BorrowerDB();
+        this.loanDB = new LoanDB();
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 한 권의 책을 대출 처리하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param catalogueNumber  책 번호
+     * @param stID             이용자 학번
+     * @return                 대출 결과 반환
      */
-    public LibraryApplication()
-    {
-        this.name = name;
-        bookDB = new BookDB();
-        borrowerDB = new BorrowerDB();
-        loanDB = new LoanDB();
-    }
-
-    /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
-     */
-    public String registerOneBorrower(String name, int stID)
-    {
-        Borrower borrowerB = borrowerDB.findOneBorrower(stID);
-        if(borrowerB != null){
-            return "중복등록";}
-        Borrower borrowerA = new Borrower(name, stID);
-        return borrowerDB.saveBorrower(borrowerA);
-    }
-
-    /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
-     */
-    public String registerOneBook(String title, String author, int catalogueNumber)
-    {
-        Book bookB = bookDB.findOneBook(catalogueNumber);
-        if(bookB != null){
-            return "중복등록";
-        }
-        Book bookA = new Book(title, author, catalogueNumber);
-        return bookDB.saveBook(bookA);
-    }
-
-
-    /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
-     */
-    public String lendOneBook(int catalogueNumber, int stID)
-    {
+    public String lendOneBook(int catalogueNumber,int stID){
         Book bookA = bookDB.findOneBook(catalogueNumber);
         if(bookA==null){
-            return "등록되지 않은 책입니다.";
+            return "등록되지 않은 책";
         }
         Borrower borrowerA = borrowerDB.findOneBorrower(stID);
-        if(borrowerA == null){
-            return "등록되지 않은 이용자 입니다.";}
-        if(bookA.check() == false){
-            return "이미 대출된 책입니다.";
+        if(borrowerA==null){
+            return "등록되지 않은 이용자";
         }
-        if(borrowerA.check() == false){
+
+        if(bookA.check()==false){
+            return "대출 불가 책";
+        }
+        if(borrowerA.check()==false){
             return "대출 건수 초과";
         }
-        Loan loanA = new Loan(bookA, borrowerA);
-        loanDB.saveLoan(loanA);
+        Loan loanA = new Loan(bookA,borrowerA);
         borrowerA.increaseLoanCount();
-
-        return "대출완료:" + loanA.toString();
+        bookA.setLoanState("대출중");
+        loanDB.saveLoan(loanA);
+        return loanA.toString();
     }
-   
+
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 한 권의 책을 반납 처리하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param catalogueNumber  책 번호
+     * @param stID             이용자 학번
+     * @return                 반납 결과 반환
      */
-    public String returnOneBook(int catalogueNumber, int stID)
-    {
+    public String returnOneBook(int catalogueNumber, int stID){
         Loan loanA=loanDB.findLoanData(catalogueNumber,stID);
+        if(loanA ==null){
+            return "대출이력이 없습니다.";
+        }
         loanDB.removeLoan(loanA);
-        
         Borrower borrowerA = borrowerDB.findOneBorrower(stID);
         borrowerA.decreaseLoanCount();
-        
         Book bookA = bookDB.findOneBook(catalogueNumber);
         bookA.setLoanState(null);
-        
-        return "반납 완료";
-    }    
-
-
-    /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
-     */
-    public String displayBooksForLoan()
-    {
-        return bookDB.getAvailableBook();
+        return "반납완료";
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 새로운 이용자 한 명 등록하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param name   이름
+     * @param stID   학번
+     * @return       등록 결과 반환
      */
-    public String displayBooksOnLoan()
-    {
-        return bookDB.getUnavailableBook();
+    public String registerOneBorrower(String name, int stID){
+        Borrower borrowerB =borrowerDB.findOneBorrower(stID);
+        if(borrowerB!=null){
+            return "중복등록";
+        }
+        Borrower borrowerA = new Borrower(name,stID);
+        borrowerDB.saveBorrower(borrowerA);
+        return borrowerA.toString();
     }
 
+    /**
+     * 새로운 책 한 권 등록하는 메소드
+     *
+     * @param title            제목
+     * @param author           저자
+     * @param catalogueNumber  책 번호
+     * @return                 등록된 책 정보 반환
+     */
+    public String registerOneBook(String title, String author, int catalogueNumber){
+        Book bookB = bookDB.findOneBook(catalogueNumber);
+        if(bookB!=null){
+            return "중복등록";
+        }
+        Book bookA = new Book(title,author,catalogueNumber);
+        bookDB.saveBook(bookA);
+        return bookA.toString();
+    }
 
+    /**
+     * 대출 가능한 책을 디스플레이하는 메소드
+     *
+     * @return 대출 가능한 책 정보
+     */
+    public void displayBooksOnLoan(){
+        bookDB.getUnavailableBook();
+    }
+
+    /**
+     * 현재 대출 중인 책을 디스플레이하는 메소드
+     *
+     * @return 대출 중인 책 정보
+     */
+    public void displayBooksForLoan(){
+        bookDB.getAvailableBook();
+    }
 }

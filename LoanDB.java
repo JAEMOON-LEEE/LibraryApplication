@@ -1,60 +1,61 @@
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ArrayList;
 
 /**
- * LoanDB 클래스의 설명을 작성하세요.
- *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * LoanDB 대출정보를 저장 및 관리
+ * 
+ * @author (PBL#6팀(2022320038_이재문,2022320022_전영준,2022320019_김승현)
+ * @version (2025.12.10)
  */
-public class LoanDB
-{
+public class LoanDB {
+
     private ArrayList<Loan> loanDB;
+
     /**
      * LoanDB 클래스의 객체 생성자
      */
-    public LoanDB()
-    {
-        this.loanDB = new ArrayList<Loan>();
+    public LoanDB(){
+        loanDB = new ArrayList<Loan>();
     }
 
     /**
-     * 예제 메소드 - 이 주석을 사용자에 맞게 바꾸십시오
+     * 대출 정보를 저장하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param loanA 대출 객체
+     * @return      저장 완료 메시지 반환
      */
     public String saveLoan(Loan loanA){
         loanDB.add(loanA);
-        return loanA.toString();
+        return "저장완료";
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 대출 객체를 찾는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param catalogueNumber 책 번호
+     * @param stID            이용자 ID
+     * @return                해당 대출 정보 반환
      */
-    public Loan findLoanData(int catalogueNumber, int stID)
-    {
-        Iterator<Loan> iterator = loanDB.iterator();
-        while(iterator.hasNext()){
-            Loan loanA = iterator.next();
-            if(loanA.getBook().getID() == catalogueNumber && loanA.getBorrower().getID() == stID){
+    public Loan findLoanData(int catalogueNumber, int stID){
+        Iterator<Loan> iter = loanDB.iterator();
+        while (iter.hasNext()){
+            Loan loanA = (Loan) iter.next();
+            if(loanA.getBook().getID()==catalogueNumber&&loanA.getBorrower().getID()==stID){
                 return loanA;
             }
+
         }
         return null;
+
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 대출 정보를 삭제하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param loanA  삭제할 Loan 객체
+     * @return        삭제 성공 여부를 반환
      */
-    public boolean removeLoan(Loan loanA)
-    {
-        return loanDB.remove(loanA);
+    public void removeLoan(Loan loanA){
+        loanDB.remove(loanA);
     }
 }
