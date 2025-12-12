@@ -1,10 +1,12 @@
+package CoreEngine;
+
 /**
  * Book 책정보(제목, 저자, 고유번호, 대출상태)
  * 
  * @author (PBL#6팀(2022320019_김승현)
- * @version (2025.12.10)
+ * @version (2025.12.08)
  */
-public class Book{
+public class Book implements Comparable<Book>{
     private String title;
     private String author;
     private int catalogueNumber;
@@ -30,7 +32,7 @@ public class Book{
      * @return 대출 가능 여부
      */
     public boolean check(){
-        return loanState=="";
+        return loanState==null;
     }
 
     /**
@@ -38,8 +40,8 @@ public class Book{
      *
      * @return 책 정보
      */
-    public void display(){
-        System.out.println(this.title+"/"+this.author+"/"+this.catalogueNumber);
+    public String display(){
+        return this.title+"/"+this.author+"/"+this.catalogueNumber;
     }
 
     /**
@@ -61,15 +63,23 @@ public class Book{
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 책의 정보를 반환하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @return    책 정보
      */
-    public String toStirng()
+    public String toString()
     {
-        return this.title+"/"+this.author+"/"+this.catalogueNumber;
+        return "책 제목: " + title + ", 저자: " + author + ", 고유번호: " + catalogueNumber; 
     }
-
-
+    
+    /**
+     * TreeSet 정렬 기준을 제공하는 메소드
+     *
+     * @param  y  책 객체
+     * @return    정렬 기준
+     */
+    public int compareTo(Book bookA)
+    {
+        return this.catalogueNumber - bookA.catalogueNumber;
+    }
 }

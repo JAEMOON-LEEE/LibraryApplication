@@ -1,8 +1,10 @@
+     package CoreEngine;
+
 /**
  * LibraryApplication 도서 대출, 반납, 새로운 이용자 등록, 새로운 책 등록, 대출중인 책 디스플레이, 대출가능한 책 디스플레이 기능을 관리
  *
  * @author (PBL#6팀(2022320038_이재문,2022320022_전영준,2022320019_김승현)
- * @version (2025.12.10)
+ * @version (2025.12.08)
  */
 public class LibraryApplication {
     private String name;
@@ -13,8 +15,8 @@ public class LibraryApplication {
     /**
      * LibraryApplication 클래스의 객체 생성자
      */
-    LibraryApplication(String l_name){
-        this.name = l_name;
+    public LibraryApplication(String libraryName){
+        this.name=libraryName;
         this.bookDB = new BookDB();
         this.borrowerDB = new BorrowerDB();
         this.loanDB = new LoanDB();
@@ -27,7 +29,7 @@ public class LibraryApplication {
      * @param stID             이용자 학번
      * @return                 대출 결과 반환
      */
-    public String lendOneBook(int catalogueNumber,int stID){
+    public String loanOneBook(int catalogueNumber,int stID){
         Book bookA = bookDB.findOneBook(catalogueNumber);
         if(bookA==null){
             return "등록되지 않은 책";
@@ -110,8 +112,9 @@ public class LibraryApplication {
      *
      * @return 대출 가능한 책 정보
      */
-    public void displayBooksOnLoan(){
-        bookDB.getUnavailableBook();
+    public String displayBooksOnLoan(){
+        return bookDB.getUnavailableBook();
+
     }
 
     /**
@@ -119,7 +122,7 @@ public class LibraryApplication {
      *
      * @return 대출 중인 책 정보
      */
-    public void displayBooksForLoan(){
-        bookDB.getAvailableBook();
+    public String displayBooksForLoan(){
+        return bookDB.getAvailableBook();
     }
 }

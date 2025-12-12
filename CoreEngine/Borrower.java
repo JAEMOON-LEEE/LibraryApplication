@@ -1,8 +1,10 @@
+package CoreEngine;
+
 /**
  * Borrower 이용자 정보(이름, 고유번호, 대출 건수)
  * 
  * @author (PBL#6팀(,2022320022_전영준)
- * @version (2025.12.10)
+ * @version (2025.12.08)
  */
 public class Borrower {
 
@@ -28,7 +30,7 @@ public class Borrower {
      * @return 대출 가능 여부 반환
      */
     public boolean check(){
-        return loanCount <11;
+        return loanCount <10;
     }
 
     /**

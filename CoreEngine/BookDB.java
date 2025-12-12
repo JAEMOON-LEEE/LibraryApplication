@@ -1,3 +1,5 @@
+package CoreEngine;
+
 import java.util.TreeSet;
 import java.util.Iterator;
 
@@ -5,7 +7,7 @@ import java.util.Iterator;
  * BookDB 책 정보를 저장 및 관리
  * 
  * @author (PBL#6팀(2022320038_이재문,2022320022_전영준,2022320019_김승현)
- * @version (2025.12.10)
+ * @version (2025.12.08)
  */
 public class BookDB {
     private TreeSet<Book> bookDB;
@@ -39,29 +41,33 @@ public class BookDB {
      *
      * @return 대출중인 책 정보
      */
-    public void getUnavailableBook(){
+    public String getUnavailableBook(){
+        String result = "";
         Iterator<Book> iter = bookDB.iterator();
         while(iter.hasNext()==true){
             Book bookA = (Book)iter.next();
-            if(bookA.check()==true){
-                bookA.display();
+            if(bookA.check()==false){
+                result += bookA.display() + "\n";
             }
         }
+        return result;
     }
-
+    
     /**
      * 대출 가능한 책을 반환하는 메소드
      *
      * @return 대출 가능한 책 정보
      */
-    public void getAvailableBook(){
+    public String getAvailableBook(){
+        String result = "";
         Iterator<Book> iter = bookDB.iterator();
         while(iter.hasNext()==true){
             Book bookA = (Book)iter.next();
-            if(bookA.check()==false){
-                bookA.display();
+            if(bookA.check()==true){
+                result += bookA.display() + "\n";
             }
         }
+        return result;
     }
 
     /**

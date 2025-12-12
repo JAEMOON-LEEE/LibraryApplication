@@ -1,10 +1,12 @@
+package CoreEngine;
+
 import java.util.Calendar;
 
 /**
  * Loan 대출정보(책정보, 이용자 정보, 대출일시, 반납 일시)
  * 
  * @author (PBL#6팀(2022320038_이재문)
- * @version (2025.12.10)
+ * @version (2025.12.08)
  */
 public class Loan {
     private String loanDate;
@@ -45,7 +47,7 @@ public class Loan {
      * @return 대출 정보
      */
     public String toString(){
-        return bookA.toString()+borrowerA.toString()+loanDate+returnDate;
+        return "책 정보: "+ bookA.toString()+"이용자 정보: "+borrowerA.toString()+"대출일시: "+loanDate+"반납 예정일"+returnDate;
     }
 
     /**
